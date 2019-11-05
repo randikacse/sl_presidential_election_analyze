@@ -1,0 +1,62 @@
+---
+title: "Public opinion poll analysis - Sri Lankan presidential election 2019 "
+output: html_notebook
+---
+
+This is a breif analysis of the sample opinion poll for the upcoming presidential election in Sri Lanka. The poll was conducted using a questionnaire provided to random individuals using both door to door and online strategies. The sample includes 206 entries covering multiple ethinicities and electoral districts around sri lanka. 
+
+### contributors
+
+1. Randika Senanayake  -
+2. Wishwa  Perera      - 199355V
+
+#### Loading the data
+
+```{r}
+library(readxl)
+responses <- read_excel("questionnaire/responses/responses.xlsx")
+View(responses)
+nrow(responses)
+```
+
+### Cleaning the data
+
+let us find which columns include incomplete data.
+```{r}
+colnames(responses)[colSums(is.na(responses))>0]
+```
+let us remove the rows with incomplete data
+```{r}
+complete_responses <- na.omit(responses)
+nrow(complete_responses)
+```
+
+### Visualizations
+
+#### Intent to vote (Yes/No/Dont know/ Other)
+
+```{r}
+q1d = as.data.frame(complete_responses[,2],drop=FALSE)
+q1dt <- as.data.frame(table(q1d))
+View(q1dt)
+levels(q1dt$q1d)
+levels(q1dt$q1d) = c("1","2","4","3")
+q1dt <- rbind(q1dt,c(3,0))
+View(q1dt)
+q1l <- c("Yes","No","No idea","prefer not to answer")
+piepercent<- round(100*q1dt[,2]/sum(q1dt[,2]), 1)
+pie(q1dt[,2], labels = piepercent, main = "Intent to vote",col = rainbow(length(q1dt[,2])))
+legend("topright", q1l, cex = 0.8,fill = rainbow(length(q1dt[,2])))
+```
+ 
+#### Winning party 
+
+```{r}
+q2d = as.data.frame(complete_responses[,3],drop=FALSE)
+q2dt <- as.data.frame(table(q2d))
+View(q2dt)
+q2l <- c("United National Party","Sri Lanka Podujana Peremuna","National People's Movement","National Peoples Party","No Idea","Prefer not to answer","Other")
+piepercent<- round(100*q2dt[,2]/sum(q2dt[,2]), 1)
+pie(q2dt[,2], labels = piepercent, main = "Winning Party",col = rainbow(length(q2dt[,2])))
+legend("topright", q2l, cex = 0.5,fill = rainbow(length(q2dt[,2])))
+```
