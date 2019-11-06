@@ -15,7 +15,7 @@ This is a breif analysis of the sample opinion poll for the upcoming presidentia
 ```{r}
 library(readxl)
 responses <- read_excel("questionnaire/responses/responses.xlsx")
-View(responses)
+#View(responses)
 nrow(responses)
 ```
 
@@ -38,25 +38,158 @@ nrow(complete_responses)
 ```{r}
 q1d = as.data.frame(complete_responses[,2],drop=FALSE)
 q1dt <- as.data.frame(table(q1d))
-View(q1dt)
+#View(q1dt)
 levels(q1dt$q1d)
 levels(q1dt$q1d) = c("1","2","4","3")
 q1dt <- rbind(q1dt,c(3,0))
-View(q1dt)
-q1l <- c("Yes","No","No idea","prefer not to answer")
+#View(q1dt)
+q1l <- c("Yes","No","prefer not to answer","No idea")
 piepercent<- round(100*q1dt[,2]/sum(q1dt[,2]), 1)
 pie(q1dt[,2], labels = piepercent, main = "Intent to vote",col = rainbow(length(q1dt[,2])))
 legend("topright", q1l, cex = 0.8,fill = rainbow(length(q1dt[,2])))
 ```
  
-#### Winning party 
+#### Party Preference 
 
 ```{r}
 q2d = as.data.frame(complete_responses[,3],drop=FALSE)
 q2dt <- as.data.frame(table(q2d))
-View(q2dt)
+#View(q2dt)
 q2l <- c("United National Party","Sri Lanka Podujana Peremuna","National People's Movement","National Peoples Party","No Idea","Prefer not to answer","Other")
-piepercent<- round(100*q2dt[,2]/sum(q2dt[,2]), 1)
-pie(q2dt[,2], labels = piepercent, main = "Winning Party",col = rainbow(length(q2dt[,2])))
+piepercent2 <- round(100*q2dt[,2]/sum(q2dt[,2]), 1)
+pie(q2dt[,2], labels = piepercent2, main = "Party Preference ",col = rainbow(length(q2dt[,2])))
 legend("topright", q2l, cex = 0.5,fill = rainbow(length(q2dt[,2])))
+```
+
+#### Candidate Preference
+
+```{r}
+q3d = as.data.frame(complete_responses[,4],drop=FALSE)
+q3dt <- as.data.frame(table(q3d))
+#View(q3dt)
+q3l <- c("Sajith Premadasa","Gotabhaya Rajapaksha","Anura Kumara Dissanayake","Mahesh Senanayake","Rohan Pallewatte","No idea","Prefer not to answer","Other")
+piepercent3 <- round(100*q3dt[,2]/sum(q3dt[,2]), 1)
+pie(q3dt[,2], labels = piepercent3, main = "Candidate Preference",col = rainbow(length(q3dt[,2])))
+legend("topright", q3l, cex = 0.5,fill = rainbow(length(q3dt[,2])))
+```
+#### Most improtant issue to be addressed
+
+```{r}
+q4d = as.data.frame(complete_responses[,5],drop=FALSE)
+q4dt <- as.data.frame(table(q4d))
+#View(q4dt)
+q4dt_mod <- q4dt[1:7,]
+#View(q4dt_mod)
+q4dt_mod <- rbind(q4dt_mod,c(8,8))
+q4l <- c("National Security","Living Cost","Economic Growth","Civil and religious conflicts","Foreign interference","Unemployment","Other")
+piepercent4 <- round(100*q4dt_mod[,2]/sum(q4dt_mod[,2]), 1)
+pie(q4dt_mod[,2], labels = piepercent4, main = "Most improtant issue to be addressed",col = rainbow(length(q4dt_mod[,2])))
+legend("topright", q4l, cex = 0.5,fill = rainbow(length(q4dt_mod[,2])))
+```
+
+
+#### Last election vote
+
+```{r}
+q5d = as.data.frame(complete_responses[,6],drop=FALSE)
+q5dt <- as.data.frame(table(q5d))
+#View(q5dt)
+q5dt_mod <- q5dt[1:4,]
+#View(q5dt_mod)
+q5dt_mod <- rbind(q5dt_mod,c(5,3))
+q5l <- c("MaithreePala Sirisena","Mahinda Rajapaksha","Did not vote","Prefer not to answer","Other")
+piepercent5 <- round(100*q5dt_mod[,2]/sum(q5dt_mod[,2]), 1)
+pie(q5dt_mod[,2], labels = piepercent5, main = "Last election vote",col = rainbow(length(q5dt_mod[,2])))
+legend("topright", q5l, cex = 0.5,fill = rainbow(length(q5dt_mod[,2])))
+```
+
+#### Voters by age
+
+```{r}
+q6d = as.data.frame(complete_responses[,7],drop=FALSE)
+q6dt <- as.data.frame(table(q6d))
+#View(q6dt)
+levels(q6dt$q6d) = c("1","2","3","4","5","6","8","9","7","10","11")
+q6dt <- rbind(q6dt,c(7,0))
+q6dt <- rbind(q6dt,c(10,0))
+q6dt <- rbind(q6dt,c(11,0))
+#View(q6dt)
+q6l <- c("18-23","24-29","30-35","36-41","42-47","48-53","60-65","66-71","54-59","72 above","Prefer not to answer")
+barplot( round(100*q6dt[,2]/sum(q6dt[,2]), 1),main="Voters by age",xlab="Age",ylab = "Percentage",names.arg  = q6l, axes=TRUE,las=2,cex/cex.axis = 0.5)
+```
+
+#### Voters by gender
+
+```{r}
+q7d = as.data.frame(complete_responses[,8],drop=FALSE)
+q7dt <- as.data.frame(table(q7d))
+#View(q7dt)
+levels(q7dt$q7d) = c("1","2","4","3")
+q7dt <- rbind(q7dt,c(3,0))
+q7l <- c("Female","Male","Other","Prefer not to answer")
+piepercent7 <- round(100*q7dt[,2]/sum(q7dt[,2]), 1)
+pie(q7dt[,2], labels = piepercent7, main = "Voters by gender",col = rainbow(length(q7dt[,2])))
+legend("topright", q7l, cex = 0.5,fill = rainbow(length(q7dt[,2])))
+```
+
+#### Voters by ethnicity
+
+```{r}
+q8d = as.data.frame(complete_responses[,9],drop=FALSE)
+q8dt <- as.data.frame(table(q8d))
+#View(q8dt)
+q8l <- c("Sinhala","Tamil","Muslim","Bhurger","Prefer Not to answer","Other")
+piepercent8 <- round(100*q8dt[,2]/sum(q8dt[,2]), 1)
+pie(q8dt[,2], labels = piepercent8, main = "Voters by ethnicity",col = rainbow(length(q8dt[,2])))
+legend("topright", q8l, cex = 0.5,fill = rainbow(length(q8dt[,2])))
+```
+
+
+#### Voters by religion
+
+```{r}
+q9d = as.data.frame(complete_responses[,10],drop=FALSE)
+q9dt <- as.data.frame(table(q9d))
+#View(q9dt)
+q9l <- c("Buddhist","Hindu","Christian","Islam","Prefer Not to answer","Other")
+piepercent9 <- round(100*q9dt[,2]/sum(q9dt[,2]), 1)
+pie(q9dt[,2], labels = piepercent9, main = "Voters by ethnicity",col = rainbow(length(q9dt[,2])))
+legend("topright", q9l, cex = 0.5,fill = rainbow(length(q9dt[,2])))
+```
+
+#### Voters by Education
+
+```{r}
+q10d = as.data.frame(complete_responses[,11],drop=FALSE)
+q10dt <- as.data.frame(table(q10d))
+#View(q10dt)
+levels(q10dt$q10d) = c("4","5","1","2","3")
+q10dt <- rbind(q10dt,c(1,0))
+q10dt <- rbind(q10dt,c(2,0))
+q10dt <- rbind(q10dt,c(3,0))
+q10l <- c("Degree/Post Graduate","Prefer not to answer","Illiterate","Elementary Education","O/L","A/L")
+piepercent10 <- round(100*q10dt[,2]/sum(q10dt[,2]), 1)
+pie(q10dt[,2], labels = piepercent10, main = "Voters by Education",col = rainbow(length(q10dt[,2])))
+legend("topright", q10l, cex = 0.5,fill = rainbow(length(q10dt[,2])))
+```
+
+#### Voters by occupation
+
+```{r}
+q11d = as.data.frame(complete_responses[,12],drop=FALSE)
+q11dt <- as.data.frame(table(q11d))
+#View(q11dt)
+levels(q11dt$q11d) = c("1","2","3","4","5","6","8","9","7","10","11")
+q11l <- c("Student","Private Sector","Government Sector","Self employed/ Business owner","Unemployed","Prefer not to answer")
+barplot( round(100*q11dt[,2]/sum(q11dt[,2]), 1),main="Voters by occupation",xlab="Occupation",ylab = "Percentage",names.arg  = q11l, axes=TRUE,las=2,cex.names = 0.5)
+```
+
+### Voters by Income
+```{r}
+q12d = as.data.frame(complete_responses[,13],drop=FALSE)
+q12dt <- as.data.frame(table(q12d))
+q12dt_mod <- q12dt[1:6,]
+q12dt_mod <- rbind(q12dt_mod,c(7,3))
+q12l <- c("0-20k","20k-50k","50k-100k","100k-200k","200k-300k","Prefer not to answer","other")
+barplot( round(100*q12dt_mod[,2]/sum(q12dt_mod[,2]), 1),main="Voters by Income",xlab="Income in Rupees",ylab = "Percentage",names.arg  = q12l, axes=TRUE,las=2,xpd=FALSE, cex.names = 0.5)
 ```
