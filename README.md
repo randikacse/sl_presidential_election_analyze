@@ -21,31 +21,55 @@ To collect samples we have used an online survey method as well as face to face 
 To analyze the collected data we have used R Studio. Using the libraries available in the R we were able to get the following results.
 Since this election is one of the major election in the country, the majority of responders willing to use their votes. 
 According to the results 89% willing to use their vote in this election.
+
 ![](https://github.com/randikacse/sl_presidential_election_analyze/blob/develop/Visualizations/IntendToVote.jpg)
+
 If the Presidential election is to be held tomorrow, the majority of respondents (70.7%) believe that Gotabhaya Rajapaksa from the SLPP would win. Only 9.4% believe that Sajith Premadasa would win.
+
 ![](https://github.com/randikacse/sl_presidential_election_analyze/blob/develop/Visualizations/PartPreference.jpg)
+
 Even though more than 70% believe Gotabhaya Rajapaksa from the SLPP would win, only 50.3% gave their preference for Gotabhaya Rajapaksa.
+
 ![](https://github.com/randikacse/sl_presidential_election_analyze/blob/develop/Visualizations/CandidatePreference.jpg)
+
 Also, most of the youngsters (18-30 age group) prefer to give their vote for Gotabhaya Rajapaksa.
+
 ![](https://github.com/randikacse/sl_presidential_election_analyze/blob/develop/Visualizations/CandidatePreferenceByAge.jpg)
+
 In the questionnaire, we were given a list of issues affecting the country at present and were asked to select which issue they thought should be the main concern. 48.1% selected corruption and economic growth while 33.7% selected the National security, 3.9% selected living cost.
+
 ![](https://github.com/randikacse/sl_presidential_election_analyze/blob/develop/Visualizations/BurningIssues.jpg)
-Even with the recent terrorist attack in the country, the majority of responders selected the economic growth as the major concern. 
+
+Even with the recent terrorist attack in the country, the majority of responders selected the economic growth as the major concern.
+
 ![](https://github.com/randikacse/sl_presidential_election_analyze/blob/develop/Visualizations/BurningIssuesByAge.jpg)
+
 The majority of the youngsters (18-30 age group) also have similar concerns about social issues.
 
 According to the last election preference majority voted for Maithreepla Sirisena.
+
 ![](https://github.com/randikacse/sl_presidential_election_analyze/blob/develop/Visualizations/LastElectionPreference.jpg)
+
 Different classifications by demographic information
+
 ![](https://github.com/randikacse/sl_presidential_election_analyze/blob/develop/Visualizations/AgeDistribution.png)
+
 ![](https://github.com/randikacse/sl_presidential_election_analyze/blob/develop/Visualizations/Race.jpg)
+
 ###### Voter by Religion
+
 ![](https://github.com/randikacse/sl_presidential_election_analyze/blob/develop/Visualizations/Religion.jpg)
+
 ![](https://github.com/randikacse/sl_presidential_election_analyze/blob/develop/Visualizations/VoterByGeder.jpg)
+
 ![](https://github.com/randikacse/sl_presidential_election_analyze/blob/develop/Visualizations/Occupation.png)
+
 ![](https://github.com/randikacse/sl_presidential_election_analyze/blob/develop/Visualizations/Income.png)
+
 ![](https://github.com/randikacse/sl_presidential_election_analyze/blob/develop/Visualizations/Education.jpg)
+
 ![](https://github.com/randikacse/sl_presidential_election_analyze/blob/develop/Visualizations/AgeDistribution.png)
+
 ![](https://github.com/randikacse/sl_presidential_election_analyze/blob/develop/Visualizations/Corellation.png)
 
 
